@@ -1,7 +1,5 @@
 # charlene
 
-com.sun.tools.classfile.ConstantPool
-
 ---
 
 * [Java Virtual Machine Specification -
