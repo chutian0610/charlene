@@ -13,7 +13,10 @@ import java.io.IOException;
  * @Package charlene.javaclass
  * @Version 1.0
  * @Description this is entity of Java Class File
- * <a herf="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.4">jvm class file format</a>
+ *
+ * 参照了 com.sun.tools.classfile.ClassFile 的jdk 实现
+ *
+ * jvm 文档链接: <a herf="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html">jvm class file format</a>
  *
  * ClassFile {
  * u4             magic; 魔数
