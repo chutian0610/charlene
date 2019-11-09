@@ -59,15 +59,149 @@ ClassFile的结构如下:
 
 这14种常量各有各自的数据结构,但是每种常量都以一个1字节的标签开头,用于区分。
 
-### CONSTANT_Class
-
-```
-CONSTANT_Class_info {
-    u1 tag;
-    u2 name_index;
-}
+```text
+ constant pool info{
+    u1 tag;  // 标志位，用于区分常量类型
+    ... ...
+ }
 ```
 
+### CONSTANT Class
+
+此类型的常量表示一个类或是接口的符号引用。
+
+```text
+ CONSTANT_Class_info {
+    u1 tag;         // 是标志位，用于区分常量类型
+    u2 name_index;  // 是一个索引值,指向了常量池中一个constant utf8 类型的常量。此常量代表类或接口的全名。
+ }
+```
+
+### CONSTATNT Utf-8
+
+```text
+ CONSTANT_Utf8_info {
+    u1 tag;            // 是标志位，用于区分常量类型
+    u2 length;         // utf8编码的字符串占用的字节数
+    u1 bytes[length];  // 长度为length的 utf8 编码的字符串
+ }
+```
+
+### CONSTANT Integer
+
+```text
+ CONSTANT_Integer_info {
+    u1 tag;    // 是标志位，用于区分常量类型
+    u4 bytes;  // 高位在前的 int 值
+ }
+```
+
+### CONSTANT Float
+
+```text
+ CONSTANT_Float_info {
+    u1 tag;    // 是标志位，用于区分常量类型
+    u4 bytes;  // 高位在前的 float
+ }
+```
+
+### CONSTANT Long
+
+```text
+ CONSTANT_Long_info {
+    u1 tag;   // 是标志位，用于区分常量类型
+    u8 bytes; // 高位在前的 long
+ }
+```
+
+### CONSTANT Double
+
+```text
+ CONSTANT_Double_info {
+    u1 tag;   // 是标志位，用于区分常量类型
+    u8 bytes; // 高位在前的 double
+ }
+```
+
+### CONSTANT String
+
+```text
+ CONSTANT_String_info {
+    u1 tag;           // 是标志位，用于区分常量类型
+    u2 string_index;  // 字符串字面量的索引
+ }
+```
+
+### CONSTANT Fieldref
+
+```text
+ CONSTANT_Fieldref_info {
+    u1 tag;                 // 是标志位，用于区分常量类型
+    u2 class_index;         // 指向声明字段的类或接口 CONSTANT_Class_info
+    u2 name_and_type_index; // 指向字段描述符 CONSTANT_NameAndType_info的索引项
+ }
+```
+
+### CONSTANT Methodref
+
+```text
+ CONSTANT_Methodref_info {
+    u1 tag;                 // 是标志位，用于区分常量类型
+    u2 class_index;         // 指向声明方法的类 CONSTANT_Class_info
+    u2 name_and_type_index; // 指向字段描述符 CONSTANT_NameAndType_info的索引项
+ }
+```
+
+### CONSTANT InterfaceMethodref
+
+```text
+ CONSTANT_InterfaceMethodref_info {
+    u1 tag;                 // 是标志位，用于区分常量类型
+    u2 class_index;         // 指向声明方法的接口 CONSTANT_Class_info
+    u2 name_and_type_index; // 指向字段描述符 CONSTANT_NameAndType_info的索引项
+ }
+```
+
+### CONSTANT NameAndType
+
+```text
+ CONSTANT_NameAndType_info {
+    u1 tag;              // 是标志位，用于区分常量类型
+    u2 name_index;       // 指向该字段或方法名称常量项
+    u2 descriptor_index; // 指向该字段或方法描述符常量项
+ }
+```
+
+### CONSTANT MethodHandle
+
+```text
+ CONSTANT_MethodHandle_info {
+    u1 tag;              // 是标志位，用于区分常量类型
+    u1 reference_kind;   // 1-9,决定了方法句柄的类型,决定了方法句柄的字节码行为
+    u2 reference_index;  // 必须是对常量池的有效索引
+ }
+```
+
+### CONSTANT MethodType
+
+```text
+ CONSTANT_MethodType_info {
+    u1 tag;              // 是标志位，用于区分常量类型
+    u2 descriptor_index; // 对常量池的有效索引，常量池在该索引处的项必须是 CONSTANT_Utf8_info,表示方法的描述符
+ }
+```
+
+### CONSTANT InvokeDynamic
+
+```text
+ CONSTANT_InvokeDynamic_info {
+    u1 tag;                         // 是标志位，用于区分常量类型
+    u2 bootstrap_method_attr_index; // 值必须是对当前 class中引导方法表 bootstrap_method[] 数组的有效索引
+    u2 name_and_type_index;         // 对常量池的有效索引，CONSTANT_NameAndType_info 类型,表示方法名和方法描述符
+ }
+```
+
+## 访问标志
 
 
 
