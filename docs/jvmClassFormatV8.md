@@ -201,7 +201,30 @@ ClassFile的结构如下:
  }
 ```
 
-## 访问标志
+## Access Flags 访问标志
+
+常量池结束后，紧跟的两个字节表示访问标志，这一标志用于识别一些雷或接口层次的访问信息。 access flags 共有16个标志位可用(两个字节是2进制的16位)，当前只定义了其中的8个。
+
+|Flag Name|Value|Interpretation|
+|:---|:---|:---|
+|ACC_PUBLIC|0x0001|声明为public，表示class 可以从包外访问。|
+|ACC_FINAL|0x0010|声明为final,不允许被继承|
+|ACC_SUPER|0x0020|是否允许使用invokespecial字节码指令的新语义，在JDK1.0.2后，该值为真。|
+|ACC_INTERFACE|0x0200|标识是否是个接口|
+|ACC_ABSTRACT|0x0400|标识是否抽象类型，对于接口和抽象类来说，此值为真|
+|ACC_SYNTHETIC|0x1000|标识该类不是由用户代码生成的。|
+|ACC_ANNOTATION|0x2000|标识一个注解|
+|ACC_ENUM|0x4000|标识一个枚举类型|
+
+## 类索引，父类索引和接口类索引集合
+
+* this_class: u2类型的数据，指向了常量池中类型为CONSTANT_Class_info的常量
+* super_class: u2类型的数据，指向了常量池中类型为CONSTANT_Class_info的常量
+* interfaces: 
+    * interfaces_count: 一组u2类型的数据集合的个数
+    * interfaces[interfaces_count]: 接口表
+
+### 字段表集合
 
 
 
