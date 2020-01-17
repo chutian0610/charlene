@@ -11,7 +11,6 @@ package charlene.core.javaclass.constant;
  *
  * cp_info {
  *     u1 tag;
- *     u1 info[];
  * }
  */
 

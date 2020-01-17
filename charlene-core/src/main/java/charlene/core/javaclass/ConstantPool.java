@@ -29,6 +29,8 @@ import java.util.ArrayList;
  * @Package charlene.javaclass
  * @Version 1.0
  * @Description
+ * constant pool table of class file，contains subtype as followed：
+ *
  * Constant Type	            Value
  * CONSTANT_Class	            7
  * CONSTANT_Fieldref         	9
@@ -68,7 +70,7 @@ public class ConstantPool {
         int count = dataInput.readUnsignedShort();
         if (count >0) {
             for (int i = 1; i < count; ++i) {
-                byte tag = dataInput.readByte();
+                byte tag = dataInput.readByte(); // subtype index
                 switch (tag) {
                     case ConstantPool.CONSTANT_Utf8:
                         constantPoolInfoList.add(new ConstantUtf8Info(tag, dataInput.readUTF()));

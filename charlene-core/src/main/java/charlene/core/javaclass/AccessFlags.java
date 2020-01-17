@@ -142,8 +142,8 @@ public class AccessFlags {
     }
 
 
-    private static String flagToModifier(int var0, AccessFlags.Kind var1) {
-        switch(var0) {
+    private static String flagToModifier(int flag, AccessFlags.Kind kind) {
+        switch(flag) {
             case 1:
                 return "public";
             case 2:
@@ -159,7 +159,7 @@ public class AccessFlags {
             case 64:
                 return "volatile";
             case 128:
-                return var1 == AccessFlags.Kind.Field ? "transient" : null;
+                return kind == AccessFlags.Kind.Field ? "transient" : null;
             case 256:
                 return "native";
             case 1024:
@@ -174,8 +174,8 @@ public class AccessFlags {
     }
 
 
-    private static String flagToName(int var0, AccessFlags.Kind var1) {
-        switch(var0) {
+    private static String flagToName(int flag, AccessFlags.Kind kind) {
+        switch(flag) {
             case 1:
                 return "ACC_PUBLIC";
             case 2:
@@ -187,11 +187,11 @@ public class AccessFlags {
             case 16:
                 return "ACC_FINAL";
             case 32:
-                return var1 == AccessFlags.Kind.Class ? "ACC_SUPER" : "ACC_SYNCHRONIZED";
+                return kind == AccessFlags.Kind.Class ? "ACC_SUPER" : "ACC_SYNCHRONIZED";
             case 64:
-                return var1 == AccessFlags.Kind.Field ? "ACC_VOLATILE" : "ACC_BRIDGE";
+                return kind == AccessFlags.Kind.Field ? "ACC_VOLATILE" : "ACC_BRIDGE";
             case 128:
-                return var1 == AccessFlags.Kind.Field ? "ACC_TRANSIENT" : "ACC_VARARGS";
+                return kind == AccessFlags.Kind.Field ? "ACC_TRANSIENT" : "ACC_VARARGS";
             case 256:
                 return "ACC_NATIVE";
             case 512:
