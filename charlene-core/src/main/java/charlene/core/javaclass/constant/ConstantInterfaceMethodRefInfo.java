@@ -1,18 +1,19 @@
 package charlene.core.javaclass.constant;
 
 /**
- * @Author chutian
- * @Email victorchu0610@outlook.com
- * @Date 2019-03-28-09:52
- * @Project charlene
- * @Package charlene.javaclass.constant
- * @Version 1.0
- * @Description 接口中方法的符号引用
+ * 接口中方法的符号引用.
+ *
+ * <pre>
  * CONSTANT_InterfaceMethodref_info {
  *     u1 tag;
  *     u2 class_index; 指向声明方法的接口 CONSTANT_Class_info
  *     u2 name_and_type_index; 指向字段描述符 CONSTANT_NameAndType_info的索引项
  * }
+ * </pre>
+ * @author chutian
+ * @victor.email victorchu0610@outlook.com
+ * @version 1.0
+ * @victor.date 2020-01-25
  */
 
 public class ConstantInterfaceMethodRefInfo extends ConstantPoolInfo {

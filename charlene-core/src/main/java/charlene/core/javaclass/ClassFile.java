@@ -6,18 +6,12 @@ import java.io.DataInput;
 import java.io.IOException;
 
 /**
- * @Author chutian
- * @Email victorchu0610@outlook.com
- * @Date 2019-03-28-09:24
- * @Project charlene
- * @Package charlene.javaclass
- * @Version 1.0
- * @Description this is entity of Java Class File
  *
- * 参照了 com.sun.tools.classfile.ClassFile 的jdk 实现
+ * 参照了 com.sun.tools.classfile.ClassFile 的jdk 实现.
  *
- * jvm 文档链接: <a herf="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html">jvm class file format</a>
+ * <p>jvm 文档链接: <a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html">jvm class file format</a></p>
  *
+ * <pre>
  * ClassFile {
  * u4             magic; 魔数
  * u2             minor_version; 次版本号
@@ -36,6 +30,11 @@ import java.io.IOException;
  * u2             attributes_count; 属性表计数
  * attribute_info attributes[attributes_count]; 属性表
  * }
+ * </pre>
+ * @author chutian
+ * @victor.email victorchu0610@outlook.com
+ * @version 1.0
+ * @victor.date 2020-01-25
  */
 
 public class ClassFile {
@@ -86,7 +85,7 @@ public class ClassFile {
     }
 
     /**
-     * check magic number of DataInput. if validated , must equals ClassFile.classMagicNumber
+     * check magic number of DataInput. if valivictor.dated , must equals ClassFile.classMagicNumber
      * @param magic
      * @throws IOException
      */

@@ -10,13 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author chutian
- * @Email victorchu0610@outlook.com
- * @Date 2019-03-30-18:33
- * @Project charlene
- * @Package charlene.javaclass.constant
- * @Version 1.0
- * @Description
+ * Jvm class 文件 attribute的处理器.
+ *
+ * <pre>
  * Attribute:
  *         ConstantValue
  *         Code
@@ -41,6 +37,11 @@ import java.util.List;
  *         AnnotationDefault
  *         BootstrapMethods
  *         MethodParameters
+ * </pre>
+ * @author chutian
+ * @victor.email victorchu0610@outlook.com
+ * @version 1.0
+ * @victor.date 2020-01-25
  */
 
 public class Attributes {

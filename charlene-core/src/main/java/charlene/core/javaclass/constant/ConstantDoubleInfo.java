@@ -1,17 +1,18 @@
 package charlene.core.javaclass.constant;
 
 /**
- * @Author chutian
- * @Email victorchu0610@outlook.com
- * @Date 2019-03-28-09:28
- * @Project charlene
- * @Package charlene.javaclass.constant
- * @Version 1.0
- * @Description 双精度浮点型字面量
+ * 双精度浮点型字面量.
+ * <pre>
  * CONSTANT_Double_info {
  *     u1 tag;
  *     u8 bytes; 高位在前的 double
  * }
+ * </pre>
+ *
+ * @author chutian
+ * @victor.email victorchu0610@outlook.com
+ * @version 1.0
+ * @victor.date 2020-01-25
  */
 public class ConstantDoubleInfo extends ConstantPoolInfo {
     private final double value;

@@ -1,13 +1,8 @@
 package charlene.core.javaclass;
 
 /**
- * @Author chutian
- * @Email victorchu0610@outlook.com
- * @Date 2019-03-29-22:07
- * @Project charlene
- * @Package charlene.javaclass
- * @Version 1.0
- * @Description java class method
+ * Jvm class 文件 method 处理器.
+ * <pre>
  * method_info {
  *     u2             access_flags;
  *     u2             name_index;
@@ -15,6 +10,11 @@ package charlene.core.javaclass;
  *     u2             attributes_count;
  *     attribute_info attributes[attributes_count];
  * }
+ * </pre>
+ * @author chutian
+ * @victor.email victorchu0610@outlook.com
+ * @version 1.0
+ * @victor.date 2020-01-25
  */
 
 public class Method {

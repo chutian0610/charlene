@@ -22,30 +22,61 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * @Author chutian
- * @Email victorchu0610@outlook.com
- * @Date 2019-03-28-10:12
- * @Project charlene
- * @Package charlene.javaclass
- * @Version 1.0
- * @Description
- * constant pool table of class file，contains subtype as followed：
+ * constant pool table of class file，contains subtype as followed.
  *
- * Constant Type	            Value
- * CONSTANT_Class	            7
- * CONSTANT_Fieldref         	9
- * CONSTANT_Methodref	        10
- * CONSTANT_InterfaceMethodref	11
- * CONSTANT_String	            8
- * CONSTANT_Integer	            3
- * CONSTANT_Float	            4
- * CONSTANT_Long	            5
- * CONSTANT_Double	            6
- * CONSTANT_NameAndType	        12
- * CONSTANT_Utf8	            1
- * CONSTANT_MethodHandle	    15
- * CONSTANT_MethodType	        16
- * CONSTANT_InvokeDynamic	    18
+ * <table border="1">
+ *     <caption>constant pool</caption>
+ *     <tr>
+ *         <th>Constant Type</th><th>Value</th>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_Class</td><td>7</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_Fieldref</td><td>9</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_Methodref</td><td>10</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_InterfaceMethodref</td><td>11</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_String</td><td>8</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_Integer</td><td>3</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_Float</td><td>4</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_Long</td><td>5</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_Double</td><td>6</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_NameAndType</td><td>12</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_Utf8</td><td>1</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_MethodHandle</td><td>15</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_MethodType</td><td>16</td>
+ *     </tr>
+ *     <tr>
+ *         <td>CONSTANT_InvokeDynamic</td><td>18</td>
+ *     </tr>
+ * </table>
+ *
+ * @author chutian
+ * @victor.email victorchu0610@outlook.com
+ * @version 1.0
+ * @victor.date 2020-01-25
  */
 
 public class ConstantPool {

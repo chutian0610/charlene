@@ -1,18 +1,18 @@
 package charlene.core.javaclass.constant;
 
 /**
- * @Author chutian
- * @Email victorchu0610@outlook.com
- * @Date 2019-03-28-09:29
- * @Project charlene
- * @Package charlene.javaclass.constant
- * @Version 1.0
- * @Description utf-8 编码的字符串
+ * utf-8 编码的字符串.
+ * <pre>
  * CONSTANT_Utf8_info {
  *     u1 tag;
  *     u2 length;  utf8编码的字符串占用的字节数
  *     u1 bytes[length];  长度为length的 utf8 编码的字符串
  * }
+ * </pre>
+ * @author chutian
+ * @victor.email victorchu0610@outlook.com
+ * @version 1.0
+ * @victor.date 2020-01-25
  */
 
 public class ConstantUtf8Info extends ConstantPoolInfo {

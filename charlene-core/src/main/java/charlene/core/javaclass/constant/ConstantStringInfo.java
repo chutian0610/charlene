@@ -1,17 +1,17 @@
 package charlene.core.javaclass.constant;
 
 /**
- * @Author chutian
- * @Email victorchu0610@outlook.com
- * @Date 2019-03-28-09:39
- * @Project charlene
- * @Package charlene.javaclass.constant
- * @Version 1.0
- * @Description 字符串类型字面量
+ * 字符串类型字面量.
+ * <pre>
  * CONSTANT_String_info {
  * u1 tag;
  * u2 string_index; 字符串字面量的索引
  * }
+ * </pre>
+ * @author chutian
+ * @victor.email victorchu0610@outlook.com
+ * @version 1.0
+ * @victor.date 2020-01-25
  */
 
 public class ConstantStringInfo extends ConstantPoolInfo {
