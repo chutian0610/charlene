@@ -13,5 +13,5 @@
 
 参考资料：
 
-* [Ja Virtual Machine Specification - Java SE 8 Edition](https://docs.oracle.com/javase/specs/jvms/se8/html/index.html)
+* [Java Virtual Machine Specification - Java SE 8 Edition](https://docs.oracle.com/javase/specs/jvms/se8/html/index.html)
 * JDK Source Code - package `com.sun.tools.classfile`
