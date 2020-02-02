@@ -15,7 +15,7 @@ package charlene.core.javaclass.constant;
  * @victor.date 2020-01-25
  */
 
-public class ConstantMethodHandleInfo extends ConstantPoolInfo {
+public class ConstantMethodHandleInfo extends AbstractConstantPoolInfo {
     private final byte referenceKind;
     private final int referenceIndex;
     public ConstantMethodHandleInfo(byte tag, byte referenceKind, int referenceIndex) {

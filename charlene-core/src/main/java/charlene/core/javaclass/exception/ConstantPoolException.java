@@ -8,7 +8,7 @@ package charlene.core.javaclass.exception;
  * @victor.date 2020-01-25
  */
 
-public class ConstantPoolException extends ClassFileFormatExecption {
+public class ConstantPoolException extends ClassFileFormatException {
     public ConstantPoolException() {
     }
 

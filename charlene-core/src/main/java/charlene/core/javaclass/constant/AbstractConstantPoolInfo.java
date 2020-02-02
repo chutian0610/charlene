@@ -13,11 +13,11 @@ package charlene.core.javaclass.constant;
  * @victor.date 2020-01-25
  */
 
-public abstract class ConstantPoolInfo {
+public abstract class AbstractConstantPoolInfo {
 
     private final byte tag;
 
-    public ConstantPoolInfo(byte tag) {
+    public AbstractConstantPoolInfo(byte tag) {
         this.tag = tag;
     }
 

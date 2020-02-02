@@ -149,25 +149,25 @@ public class AccessFlags {
     public static final int ACC_ENUM = 16384;
     public static final int ACC_MANDATED = 32768;
 
-    private static final int[] classModifiers =
+    private static final int[] CLASS_MODIFIERS =
             new int[]{ACC_PUBLIC, ACC_FINAL, ACC_ABSTRACT};
-    private static final int[] classFlags =
+    private static final int[] CLASS_FLAGS =
             new int[]{ACC_PUBLIC, ACC_FINAL, ACC_SUPER, ACC_INTERFACE, ACC_ABSTRACT, ACC_SYNTHETIC
                     , ACC_ANNOTATION, ACC_ENUM};
-    private static final int[] innerClassModifiers =
+    private static final int[] INNER_CLASS_MODIFIERS =
             new int[]{ACC_PUBLIC, ACC_PRIVATE, ACC_PROTECTED, ACC_STATIC, ACC_FINAL, ACC_ABSTRACT};
-    private static final int[] innerClassFlags =
+    private static final int[] INNER_CLASS_FLAGS =
             new int[]{ACC_PUBLIC, ACC_PRIVATE, ACC_PROTECTED, ACC_STATIC, ACC_FINAL, ACC_SUPER, ACC_INTERFACE
                     , ACC_ABSTRACT, ACC_SYNTHETIC, ACC_ANNOTATION, ACC_ENUM};
-    private static final int[] fieldModifiers =
+    private static final int[] FIELD_MODIFIERS =
             new int[]{ACC_PUBLIC, ACC_PRIVATE, ACC_PROTECTED, ACC_STATIC, ACC_FINAL, ACC_VOLATILE, ACC_VARARGS};
-    private static final int[] fieldFlags =
+    private static final int[] FIELD_FLAGS =
             new int[]{ACC_PUBLIC, ACC_PRIVATE, ACC_PROTECTED, ACC_STATIC, ACC_FINAL, ACC_VOLATILE, ACC_TRANSIENT,
                     ACC_SYNTHETIC, ACC_ENUM};
-    private static final int[] methodModifiers =
+    private static final int[] METHOD_MODIFIERS =
             new int[]{ACC_PUBLIC, ACC_PRIVATE, ACC_PROTECTED, ACC_STATIC, ACC_FINAL, ACC_SYNCHRONIZED, ACC_NATIVE
                     , ACC_ABSTRACT, ACC_STRICT};
-    private static final int[] methodFlags =
+    private static final int[] METHOD_FLAGS =
             new int[]{ACC_PUBLIC, ACC_PRIVATE, ACC_PROTECTED, ACC_STATIC, ACC_FINAL, ACC_SYNCHRONIZED, ACC_BRIDGE
                     , ACC_VARARGS, ACC_NATIVE, ACC_ABSTRACT, ACC_STRICT, ACC_SYNTHETIC};
 
@@ -283,10 +283,25 @@ public class AccessFlags {
         }
     }
 
+    /**
+     * 描述修饰符应用的场景.
+     */
     public static enum Kind {
+        /**
+         * 用于修饰类
+         */
         Class,
+        /**
+         * 用于修饰内部类
+         */
         InnerClass,
+        /**
+         * 用于修饰字段
+         */
         Field,
+        /**
+         * 用于修饰方法
+         */
         Method;
     }
 

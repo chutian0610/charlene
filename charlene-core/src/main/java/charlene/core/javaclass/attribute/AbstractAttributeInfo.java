@@ -18,12 +18,12 @@ package charlene.core.javaclass.attribute;
  * @victor.date 2020-01-25
  */
 
-public abstract class AttributeInfo {
+public abstract class AbstractAttributeInfo {
 
     public final int attributeNameIndex;
     public final int attributeLength;
 
-    public AttributeInfo(int attributeNameIndex, int attributeLength) {
+    public AbstractAttributeInfo(int attributeNameIndex, int attributeLength) {
         this.attributeNameIndex = attributeNameIndex;
         this.attributeLength = attributeLength;
     }

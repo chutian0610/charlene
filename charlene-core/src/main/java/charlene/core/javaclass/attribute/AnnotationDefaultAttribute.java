@@ -18,7 +18,7 @@ package charlene.core.javaclass.attribute;
  * @victor.date 2020-01-25
  */
 
-public class AnnotationDefaultAttribute extends AttributeInfo {
+public class AnnotationDefaultAttribute extends AbstractAttributeInfo {
     public AnnotationDefaultAttribute(int attributeNameIndex, int attributeLength) {
         super(attributeNameIndex, attributeLength);
     }

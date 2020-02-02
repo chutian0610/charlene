@@ -15,7 +15,7 @@ package charlene.core.javaclass.constant;
  * @victor.date 2020-01-25
  */
 
-public class ConstantUtf8Info extends ConstantPoolInfo {
+public class ConstantUtf8Info extends AbstractConstantPoolInfo {
     private final String value;
 
     public ConstantUtf8Info(byte tag, String value) {

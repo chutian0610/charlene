@@ -13,7 +13,7 @@ import charlene.core.javaclass.constant.ConstantMethodHandleInfo;
 import charlene.core.javaclass.constant.ConstantMethodRefInfo;
 import charlene.core.javaclass.constant.ConstantMethodTypeInfo;
 import charlene.core.javaclass.constant.ConstantNameAndTypeInfo;
-import charlene.core.javaclass.constant.ConstantPoolInfo;
+import charlene.core.javaclass.constant.AbstractConstantPoolInfo;
 import charlene.core.javaclass.constant.ConstantStringInfo;
 import charlene.core.javaclass.constant.ConstantUtf8Info;
 
@@ -80,75 +80,76 @@ import java.util.ArrayList;
  */
 
 public class ConstantPool {
-    public static final int CONSTANT_Utf8 = 1;
-    public static final int CONSTANT_Integer = 3;
-    public static final int CONSTANT_Float = 4;
-    public static final int CONSTANT_Long = 5;
-    public static final int CONSTANT_Double = 6;
-    public static final int CONSTANT_Class = 7;
-    public static final int CONSTANT_String = 8;
-    public static final int CONSTANT_Fieldref = 9;
-    public static final int CONSTANT_Methodref = 10;
-    public static final int CONSTANT_InterfaceMethodref = 11;
-    public static final int CONSTANT_NameAndType = 12;
-    public static final int CONSTANT_MethodHandle = 15;
-    public static final int CONSTANT_MethodType = 16;
-    public static final int CONSTANT_InvokeDynamic = 18;
-    private ArrayList<ConstantPoolInfo> constantPoolInfoList = new ArrayList<>();
+    public static final int CONSTANT_UTF8 = 1;
+    public static final int CONSTANT_INTEGER = 3;
+    public static final int CONSTANT_FLOAT = 4;
+    public static final int CONSTANT_LONG = 5;
+    public static final int CONSTANT_DOUBLE = 6;
+    public static final int CONSTANT_CLASS = 7;
+    public static final int CONSTANT_STRING = 8;
+    public static final int CONSTANT_FIELD_REF = 9;
+    public static final int CONSTANT_METHOD_REF = 10;
+    public static final int CONSTANT_INTERFACE_METHOD_REF = 11;
+    public static final int CONSTANT_NAME_AND_TYPE = 12;
+    public static final int CONSTANT_METHOD_HANDLE = 15;
+    public static final int CONSTANT_METHOD_TYPE = 16;
+    public static final int CONSTANT_INVOKE_DYNAMIC = 18;
+    private ArrayList<AbstractConstantPoolInfo> abstractConstantPoolInfoList = new ArrayList<>();
 
     ConstantPool(DataInput dataInput) throws IOException {
         // constant pool array count
         int count = dataInput.readUnsignedShort();
         if (count >0) {
             for (int i = 1; i < count; ++i) {
-                byte tag = dataInput.readByte(); // subtype index
+                // subtype index
+                byte tag = dataInput.readByte();
                 switch (tag) {
-                    case ConstantPool.CONSTANT_Utf8:
-                        constantPoolInfoList.add(new ConstantUtf8Info(tag, dataInput.readUTF()));
+                    case ConstantPool.CONSTANT_UTF8:
+                        abstractConstantPoolInfoList.add(new ConstantUtf8Info(tag, dataInput.readUTF()));
                         break;
-                    case ConstantPool.CONSTANT_Integer:
-                        constantPoolInfoList.add(new ConstantIntegerInfo(tag, dataInput.readInt()));
+                    case ConstantPool.CONSTANT_INTEGER:
+                        abstractConstantPoolInfoList.add(new ConstantIntegerInfo(tag, dataInput.readInt()));
                         break;
-                    case ConstantPool.CONSTANT_Float:
-                        constantPoolInfoList.add(new ConstantFloatInfo(tag, dataInput.readFloat()));
+                    case ConstantPool.CONSTANT_FLOAT:
+                        abstractConstantPoolInfoList.add(new ConstantFloatInfo(tag, dataInput.readFloat()));
                         break;
-                    case ConstantPool.CONSTANT_Long:
-                        constantPoolInfoList.add(new ConstantLongInfo(tag,dataInput.readLong()));
+                    case ConstantPool.CONSTANT_LONG:
+                        abstractConstantPoolInfoList.add(new ConstantLongInfo(tag,dataInput.readLong()));
                         break;
-                    case ConstantPool.CONSTANT_Double:
-                        constantPoolInfoList.add(new ConstantDoubleInfo(tag,dataInput.readDouble()));
+                    case ConstantPool.CONSTANT_DOUBLE:
+                        abstractConstantPoolInfoList.add(new ConstantDoubleInfo(tag,dataInput.readDouble()));
                         break;
-                    case ConstantPool.CONSTANT_Class:
-                        constantPoolInfoList.add(new ConstantClassInfo(tag,dataInput.readUnsignedShort()));
+                    case ConstantPool.CONSTANT_CLASS:
+                        abstractConstantPoolInfoList.add(new ConstantClassInfo(tag,dataInput.readUnsignedShort()));
                         break;
-                    case ConstantPool.CONSTANT_String:
-                        constantPoolInfoList.add(new ConstantStringInfo(tag,dataInput.readUnsignedShort()));
+                    case ConstantPool.CONSTANT_STRING:
+                        abstractConstantPoolInfoList.add(new ConstantStringInfo(tag,dataInput.readUnsignedShort()));
                         break;
-                    case ConstantPool.CONSTANT_Fieldref:
-                        constantPoolInfoList.add(new ConstantFieldRefInfo(tag,dataInput.readUnsignedShort(),
+                    case ConstantPool.CONSTANT_FIELD_REF:
+                        abstractConstantPoolInfoList.add(new ConstantFieldRefInfo(tag,dataInput.readUnsignedShort(),
                                 dataInput.readUnsignedShort()));
                         break;
-                    case ConstantPool.CONSTANT_Methodref:
-                        constantPoolInfoList.add(new ConstantMethodRefInfo(tag,dataInput.readUnsignedShort(),
+                    case ConstantPool.CONSTANT_METHOD_REF:
+                        abstractConstantPoolInfoList.add(new ConstantMethodRefInfo(tag,dataInput.readUnsignedShort(),
                                 dataInput.readUnsignedShort()));
                         break;
-                    case ConstantPool.CONSTANT_InterfaceMethodref:
-                        constantPoolInfoList.add(new ConstantInterfaceMethodRefInfo(tag,dataInput.readUnsignedShort(),
+                    case ConstantPool.CONSTANT_INTERFACE_METHOD_REF:
+                        abstractConstantPoolInfoList.add(new ConstantInterfaceMethodRefInfo(tag,dataInput.readUnsignedShort(),
                                 dataInput.readUnsignedShort()));
                         break;
-                    case ConstantPool.CONSTANT_NameAndType:
-                        constantPoolInfoList.add(new ConstantNameAndTypeInfo(tag,dataInput.readUnsignedShort(),
+                    case ConstantPool.CONSTANT_NAME_AND_TYPE:
+                        abstractConstantPoolInfoList.add(new ConstantNameAndTypeInfo(tag,dataInput.readUnsignedShort(),
                                 dataInput.readUnsignedShort()));
                         break;
-                    case ConstantPool.CONSTANT_MethodHandle:
-                        constantPoolInfoList.add(new ConstantMethodHandleInfo(tag,dataInput.readByte()
+                    case ConstantPool.CONSTANT_METHOD_HANDLE:
+                        abstractConstantPoolInfoList.add(new ConstantMethodHandleInfo(tag,dataInput.readByte()
                                 ,dataInput.readUnsignedShort()));
                         break;
-                    case ConstantPool.CONSTANT_MethodType:
-                        constantPoolInfoList.add(new ConstantMethodTypeInfo(tag,dataInput.readUnsignedShort()));
+                    case ConstantPool.CONSTANT_METHOD_TYPE:
+                        abstractConstantPoolInfoList.add(new ConstantMethodTypeInfo(tag,dataInput.readUnsignedShort()));
                         break;
-                    case ConstantPool.CONSTANT_InvokeDynamic:
-                        constantPoolInfoList.add(new ConstantInvokeDynamicInfo(tag,dataInput.readUnsignedShort()
+                    case ConstantPool.CONSTANT_INVOKE_DYNAMIC:
+                        abstractConstantPoolInfoList.add(new ConstantInvokeDynamicInfo(tag,dataInput.readUnsignedShort()
                                 ,dataInput.readUnsignedShort()));
                         break;
                     default:
@@ -161,20 +162,20 @@ public class ConstantPool {
         }
     }
 
-    public ConstantPoolInfo get(int i) {
-        return constantPoolInfoList.get(i);
+    public AbstractConstantPoolInfo get(int i) {
+        return abstractConstantPoolInfoList.get(i);
     }
 
-    public ConstantUtf8Info getUTF8Info(int i){
-        ConstantPoolInfo constantPoolInfo = constantPoolInfoList.get(i);
-        if(constantPoolInfo.getTag() == CONSTANT_Utf8){
-            return (ConstantUtf8Info) constantPoolInfo;
+    public ConstantUtf8Info getutf8Info(int i){
+        AbstractConstantPoolInfo abstractConstantPoolInfo = abstractConstantPoolInfoList.get(i);
+        if(abstractConstantPoolInfo.getTag() == CONSTANT_UTF8){
+            return (ConstantUtf8Info) abstractConstantPoolInfo;
         }else {
-            throw new ConstantPoolException("unexpected constant at #" + i + " -- expected tag 1, found "+constantPoolInfo.getTag());
+            throw new ConstantPoolException("unexpected constant at #" + i + " -- expected tag 1, found "+ abstractConstantPoolInfo.getTag());
         }
     }
 
     public int size() {
-        return constantPoolInfoList.size();
+        return abstractConstantPoolInfoList.size();
     }
 }

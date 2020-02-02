@@ -15,7 +15,7 @@ package charlene.core.javaclass.constant;
  * @victor.date 2020-01-25
  */
 
-public class ConstantMethodRefInfo extends ConstantPoolInfo {
+public class ConstantMethodRefInfo extends AbstractConstantPoolInfo {
     private final int classIndex;
     private final int nameAndTypeIndex;
 

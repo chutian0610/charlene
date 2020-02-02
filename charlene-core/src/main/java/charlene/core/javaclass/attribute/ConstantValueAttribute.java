@@ -41,7 +41,7 @@ package charlene.core.javaclass.attribute;
  * @victor.date 2020-01-25
  */
 
-public class ConstantValueAttribute extends AttributeInfo {
+public class ConstantValueAttribute extends AbstractAttributeInfo {
     private final int constantValueIndex;
 
     public ConstantValueAttribute(int attributeNameIndex, int attributeLength, int constantValueIndex) {

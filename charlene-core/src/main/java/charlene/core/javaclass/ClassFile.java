@@ -1,36 +1,35 @@
 package charlene.core.javaclass;
 
-import charlene.core.javaclass.exception.ClassFileFormatExecption;
+import charlene.core.javaclass.exception.ClassFileFormatException;
 
 import java.io.DataInput;
 import java.io.IOException;
 
 /**
- *
- * 参照了 com.sun.tools.classfile.ClassFile 的jdk 实现.
- *
- * <p>jvm 文档链接: <a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html">jvm class file format</a></p>
- *
+ * jvm class 文件结构模型.
+ * 基于<a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html">jvm class file format</a> 实现的class文件model.<br/>
+ * class 文件结构如下:<br/>
  * <pre>
  * ClassFile {
- * u4             magic; 魔数
- * u2             minor_version; 次版本号
- * u2             major_version; 主版本号
- * u2             constant_pool_count; 常量池容量(计数从1开始)
- * cp_info        constant_pool[constant_pool_count-1]; 常量池
- * u2             access_flags; 访问标志
- * u2             this_class; 类索引
- * u2             super_class; 父类索引
- * u2             interfaces_count; 接口计数器
- * u2             interfaces[interfaces_count]; 接口表
- * u2             fields_count; 字段表计数
- * field_info     fields[fields_count]; 字段表
- * u2             methods_count; 方法表计数
- * method_info    methods[methods_count]; 方法表
- * u2             attributes_count; 属性表计数
- * attribute_info attributes[attributes_count]; 属性表
+ *      u4             magic; 魔数
+ *      u2             minor_version; 次版本号
+ *      u2             major_version; 主版本号
+ *      u2             constant_pool_count; 常量池容量(计数从1开始)
+ *      cp_info        constant_pool[constant_pool_count-1]; 常量池
+ *      u2             access_flags; 访问标志
+ *      u2             this_class; 类索引
+ *      u2             super_class; 父类索引
+ *      u2             interfaces_count; 接口计数器
+ *      u2             interfaces[interfaces_count]; 接口表
+ *      u2             fields_count; 字段表计数
+ *      field_info     fields[fields_count]; 字段表
+ *      u2             methods_count; 方法表计数
+ *      method_info    methods[methods_count]; 方法表
+ *      u2             attributes_count; 属性表计数
+ *      attribute_info attributes[attributes_count]; 属性表
  * }
  * </pre>
+ *
  * @author chutian
  * @victor.email victorchu0610@outlook.com
  * @version 1.0
@@ -38,8 +37,11 @@ import java.io.IOException;
  */
 
 public class ClassFile {
-    // 默认魔数值
-    public static final int classMagicNumber = 0xCAFEBABE;
+    /**
+     * class 文件头 默认魔数值.
+     */
+
+    public static final int CLASS_MAGIC_NUMBER = 0xCAFEBABE;
     public final int magic;
     public final int minorVersion;
     public final int majorVersion;
@@ -90,8 +92,8 @@ public class ClassFile {
      * @throws IOException
      */
     private static void checkMagicNumber(int magic) throws IOException {
-        if (magic != ClassFile.classMagicNumber) {
-            throw new ClassFileFormatExecption("Invalid class file format，wrong magic number！");
+        if (magic != ClassFile.CLASS_MAGIC_NUMBER) {
+            throw new ClassFileFormatException("Invalid class file format，wrong magic number！");
         }
     }
 
@@ -104,7 +106,8 @@ public class ClassFile {
     private static int[] deserializeInterfaces(DataInput dataInput) throws IOException {
         int count = dataInput.readUnsignedShort();
         if (count == 0) {
-            return null;  // not implement any interface
+            // not implement any interface
+            return null;
         } else {
             int[] interfaces = new int[count];
             for(int i = 0; i < count; ++i) {

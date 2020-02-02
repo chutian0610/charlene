@@ -14,7 +14,7 @@ package charlene.core.javaclass.constant;
  * @victor.date 2020-01-25
  */
 
-public class ConstantIntegerInfo extends ConstantPoolInfo {
+public class ConstantIntegerInfo extends AbstractConstantPoolInfo {
     private final int value;
     public ConstantIntegerInfo(byte tag, int value) {
         super(tag);

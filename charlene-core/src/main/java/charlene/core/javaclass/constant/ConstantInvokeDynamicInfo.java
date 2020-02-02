@@ -15,7 +15,7 @@ package charlene.core.javaclass.constant;
  * @victor.date 2020-01-25
  */
 
-public class ConstantInvokeDynamicInfo extends ConstantPoolInfo {
+public class ConstantInvokeDynamicInfo extends AbstractConstantPoolInfo {
     private final int bootstrapMethodAttrIndex;
     private final int nameAndTypeIndex;
     public ConstantInvokeDynamicInfo(byte tag, int bootstrapMethodAttrIndex, int nameAndTypeIndex) {

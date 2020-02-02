@@ -1,7 +1,7 @@
 package charlene.core.javaclass;
 
-import charlene.core.javaclass.exception.ClassFileFormatExecption;
-import charlene.core.javaclass.attribute.AttributeInfo;
+import charlene.core.javaclass.exception.ClassFileFormatException;
+import charlene.core.javaclass.attribute.AbstractAttributeInfo;
 import charlene.core.javaclass.attribute.ConstantValueAttribute;
 
 import java.io.DataInput;
@@ -45,35 +45,34 @@ import java.util.List;
  */
 
 public class Attributes {
-    public static final String AnnotationDefault = "AnnotationDefault";
-    public static final String BootstrapMethods = "BootstrapMethods";
-    public static final String CharacterRangeTable = "CharacterRangeTable";
-    public static final String Code = "Code";
-    public static final String ConstantValue = "ConstantValue";
-    public static final String CompilationID = "CompilationID";
-    public static final String Deprecated = "Deprecated";
-    public static final String EnclosingMethod = "EnclosingMethod";
-    public static final String Exceptions = "Exceptions";
-    public static final String InnerClasses = "InnerClasses";
-    public static final String LineNumberTable = "LineNumberTable";
-    public static final String LocalVariableTable = "LocalVariableTable";
-    public static final String LocalVariableTypeTable = "LocalVariableTypeTable";
-    public static final String MethodParameters = "MethodParameters";
-    public static final String RuntimeVisibleAnnotations = "RuntimeVisibleAnnotations";
-    public static final String RuntimeInvisibleAnnotations = "RuntimeInvisibleAnnotations";
-    public static final String RuntimeVisibleParameterAnnotations = "RuntimeVisibleParameterAnnotations";
-    public static final String RuntimeInvisibleParameterAnnotations = "RuntimeInvisibleParameterAnnotations";
-    public static final String RuntimeVisibleTypeAnnotations = "RuntimeVisibleTypeAnnotations";
-    public static final String RuntimeInvisibleTypeAnnotations = "RuntimeInvisibleTypeAnnotations";
-    public static final String Signature = "Signature";
-    public static final String SourceDebugExtension = "SourceDebugExtension";
-    public static final String SourceFile = "SourceFile";
-    public static final String SourceID = "SourceID";
-    public static final String StackMap = "StackMap";
-    public static final String StackMapTable = "StackMapTable";
-    public static final String Synthetic = "Synthetic";
+    public static final String ANNOTATION_DEFAULT = "AnnotationDefault";
+    public static final String BOOTSTRAP_METHODS = "BootstrapMethods";
+    public static final String CHARACTER_RANGE_TABLE = "CharacterRangeTable";
+    public static final String CODE = "Code";
+    public static final String CONSTANT_VALUE = "ConstantValue";
+    public static final String COMPILATIONID = "CompilationID";
+    public static final String DEPRECATED = "Deprecated";
+    public static final String ENCLOSING_METHOD = "EnclosingMethod";
+    public static final String EXCEPTIONS = "Exceptions";
+    public static final String INNER_CLASSES = "InnerClasses";
+    public static final String LINE_NUMBER_TABLE = "LineNumberTable";
+    public static final String LOCAL_VARIABLE_TABLE = "LocalVariableTable";
+    public static final String LOCAL_VARIABLE_TYPE_TABLE = "LocalVariableTypeTable";
+    public static final String METHOD_PARAMETERS = "MethodParameters";
+    public static final String RUNTIME_VISIBLE_ANNOTATIONS = "RuntimeVisibleAnnotations";
+    public static final String RUNTIME_INVISIBLE_ANNOTATIONS = "RuntimeInvisibleAnnotations";
+    public static final String RUNTIME_VISIBLE_PARAMETER_ANNOTATIONS = "RuntimeVisibleParameterAnnotations";
+    public static final String RUNTIME_INVISIBLE_PARAMETER_ANNOTATIONS = "RuntimeInvisibleParameterAnnotations";
+    public static final String RUNTIME_VISIBLE_TYPE_ANNOTATIONS = "RuntimeVisibleTypeAnnotations";
+    public static final String RUNTIME_INVISIBLE_TYPE_ANNOTATIONS = "RuntimeInvisibleTypeAnnotations";
+    public static final String SIGNATURE = "Signature";
+    public static final String SOURCE_DEBUG_EXTENSION = "SourceDebugExtension";
+    public static final String SOURCE_FILE = "SourceFile";
+    public static final String SOURCEID = "SourceID";
+    public static final String STACK_MAP = "StackMap";
+    public static final String STACK_MAP_TABLE = "StackMapTable";
+    public static final String SYNTHETIC = "Synthetic";
 
-    private List<AttributeInfo> attributeInfos = new ArrayList<>();
     /**
      * fetch attributes of class, field and method from data input
      * @param dataInput
@@ -84,60 +83,63 @@ public class Attributes {
         int count = dataInput.readUnsignedShort();
         if (count > 0) {
             for(int i = 0; i < count; ++i) {
-                int attribute_name_index = dataInput.readUnsignedShort();
-                int attribute_length = dataInput.readInt();
-                String attribute_name = constantPool.getUTF8Info(attribute_name_index).getUtf8();
-                switch (attribute_name){
-                    case Attributes.AnnotationDefault:
+                int attributeNameIndex = dataInput.readUnsignedShort();
+                int attributeLength = dataInput.readInt();
+                String attributeName = constantPool.getutf8Info(attributeNameIndex).getUtf8();
+                List<AbstractAttributeInfo> abstractAttributeInfos = new ArrayList<>();
+                switch (attributeName){
+                    case Attributes.ANNOTATION_DEFAULT:
                         break;
-                    case Attributes.BootstrapMethods:
+                    case Attributes.BOOTSTRAP_METHODS:
                         break;
-                    case Attributes.Code:
+                    case Attributes.CODE:
                         break;
-                    case Attributes.ConstantValue:
-                        if (attribute_length !=2){
-                            throw new ClassFileFormatExecption("Invalid attribute length for constant value");
+                    case Attributes.CONSTANT_VALUE:
+                        if (attributeLength !=2){
+                            throw new ClassFileFormatException("Invalid attribute length for constant value");
                         }
-                        attributeInfos.add(new ConstantValueAttribute(attribute_name_index,attribute_length,dataInput.readUnsignedShort()));
+                        abstractAttributeInfos.add(new ConstantValueAttribute(attributeNameIndex,attributeLength,dataInput.readUnsignedShort()));
                         break;
-                    case Attributes.Deprecated:
+                    case Attributes.DEPRECATED:
                         break;
-                    case Attributes.EnclosingMethod:
+                    case Attributes.ENCLOSING_METHOD:
                         break;
-                    case Attributes.Exceptions:
+                    case Attributes.EXCEPTIONS:
                         break;
-                    case Attributes.InnerClasses:
+                    case Attributes.INNER_CLASSES:
                         break;
-                    case Attributes.LineNumberTable:
+                    case Attributes.LINE_NUMBER_TABLE:
                         break;
-                    case Attributes.LocalVariableTable:
+                    case Attributes.LOCAL_VARIABLE_TABLE:
                         break;
-                    case Attributes.LocalVariableTypeTable:
+                    case Attributes.LOCAL_VARIABLE_TYPE_TABLE:
                         break;
-                    case Attributes.MethodParameters:
+                    case Attributes.METHOD_PARAMETERS:
                         break;
-                    case Attributes.RuntimeInvisibleAnnotations:
+                    case Attributes.RUNTIME_INVISIBLE_ANNOTATIONS:
                         break;
-                    case Attributes.RuntimeInvisibleParameterAnnotations:
+                    case Attributes.RUNTIME_INVISIBLE_PARAMETER_ANNOTATIONS:
                         break;
-                    case Attributes.RuntimeInvisibleTypeAnnotations:
+                    case Attributes.RUNTIME_INVISIBLE_TYPE_ANNOTATIONS:
                         break;
-                    case Attributes.RuntimeVisibleAnnotations:
+                    case Attributes.RUNTIME_VISIBLE_ANNOTATIONS:
                         break;
-                    case Attributes.RuntimeVisibleParameterAnnotations:
+                    case Attributes.RUNTIME_VISIBLE_PARAMETER_ANNOTATIONS:
                         break;
-                    case Attributes.RuntimeVisibleTypeAnnotations:
+                    case Attributes.RUNTIME_VISIBLE_TYPE_ANNOTATIONS:
                         break;
-                    case Attributes.Signature:
+                    case Attributes.SIGNATURE:
                         break;
-                    case Attributes.SourceDebugExtension:
+                    case Attributes.SOURCE_DEBUG_EXTENSION:
                         break;
-                    case Attributes.SourceFile:
+                    case Attributes.SOURCE_FILE:
                         break;
-                    case Attributes.StackMapTable:
+                    case Attributes.STACK_MAP_TABLE:
                         break;
-                    case Attributes.Synthetic:
+                    case Attributes.SYNTHETIC:
                         break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + attributeName);
                 }
             }
         }

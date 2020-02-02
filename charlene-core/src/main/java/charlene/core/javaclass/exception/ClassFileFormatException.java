@@ -9,26 +9,26 @@ package charlene.core.javaclass.exception;
  * @victor.date 2020-01-25
  */
 
-public class ClassFileFormatExecption extends RuntimeException {
+public class ClassFileFormatException extends RuntimeException {
 
     private static final long serialVersionUID = -8154925009678576837L;
 
-    public ClassFileFormatExecption() {
+    public ClassFileFormatException() {
     }
 
-    public ClassFileFormatExecption(String message) {
+    public ClassFileFormatException(String message) {
         super(message);
     }
 
-    public ClassFileFormatExecption(String message, Throwable cause) {
+    public ClassFileFormatException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public ClassFileFormatExecption(Throwable cause) {
+    public ClassFileFormatException(Throwable cause) {
         super(cause);
     }
 
-    public ClassFileFormatExecption(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public ClassFileFormatException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

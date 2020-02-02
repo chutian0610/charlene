@@ -14,7 +14,7 @@ package charlene.core.javaclass.constant;
  * @version 1.0
  * @victor.date 2020-01-25
  */
-public class ConstantDoubleInfo extends ConstantPoolInfo {
+public class ConstantDoubleInfo extends AbstractConstantPoolInfo {
     private final double value;
 
     public ConstantDoubleInfo(byte tag, double value) {
