@@ -2,12 +2,11 @@
 
 ## java doc
 
-在项目中使用了两个自定义java doc tag :
+在项目中使用了1个自定义java doc tag :
 
-* `victor.date`
 * `victor.email`
 
-生成java doc时，请加上参数 `-tag victor.email:a:"邮件:" -tag victor.date:a:"日期:"`
+生成java doc时，请加上参数 `-tag victor.email:a:"邮件:"
 
 ---
 
